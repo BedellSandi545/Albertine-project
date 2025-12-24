@@ -335,6 +335,16 @@ document.addEventListener("DOMContentLoaded", () => {
       // Reset for next click
       isActionTriggered = false;
       finalHeart.classList.remove("clicked");
+
+      // --- Show Proposal Section ---
+      const proposalSection = document.getElementById("proposal-section");
+      if (proposalSection) {
+        // Scroll to the new section
+        proposalSection.classList.remove("hidden");
+        setTimeout(() => {
+          proposalSection.scrollIntoView({ behavior: "smooth" });
+        }, 300); // Wait a moment for other animations to settle
+      }
     };
 
     // Add listener to close button once
@@ -382,6 +392,55 @@ document.addEventListener("DOMContentLoaded", () => {
         // If no images, just show the message and reset
         stopSlideshow();
       }
+    });
+  }
+
+  // --- Proposal Section Logic ---
+  const proposalSection = document.getElementById("proposal-section");
+  if (proposalSection) {
+    const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
+    const celebrationMessage = document.getElementById("celebration-message");
+    const proposalQuestion = document.getElementById("proposal-question");
+    const proposalButtons = document.querySelector(".proposal-buttons");
+
+    noBtn.addEventListener("mouseover", () => {
+      const containerRect = proposalSection.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const newTop = Math.random() * (containerRect.height - btnRect.height);
+      const newLeft = Math.random() * (containerRect.width - btnRect.width);
+
+      noBtn.style.top = `${newTop}px`;
+      noBtn.style.left = `${newLeft}px`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      // Hide question and buttons
+      proposalQuestion.style.display = "none";
+      proposalButtons.style.display = "none";
+
+      // Show celebration message
+      celebrationMessage.classList.remove("hidden");
+      celebrationMessage.style.opacity = "1";
+
+      // Trigger a massive fireworks finale
+      let finaleCount = 0;
+      const grandFinale = setInterval(() => {
+        if (finaleCount >= 30 || !fireworksCanvas) {
+          clearInterval(grandFinale);
+          return;
+        }
+        // Launch fireworks from multiple locations for a bigger effect
+        for (let i = 0; i < 3; i++) {
+          let startX = (fireworksCanvas.width / 4) * (i + 1);
+          let startY = fireworksCanvas.height;
+          let endX = Math.random() * fireworksCanvas.width;
+          let endY = (Math.random() * fireworksCanvas.height) / 2;
+          fireworks.push(new Firework(startX, startY, endX, endY));
+        }
+        finaleCount++;
+      }, 200);
     });
   }
 });

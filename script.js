@@ -403,22 +403,97 @@ document.addEventListener("DOMContentLoaded", () => {
     const celebrationMessage = document.getElementById("celebration-message");
     const proposalQuestion = document.getElementById("proposal-question");
     const proposalButtons = document.querySelector(".proposal-buttons");
+    const noBtnMessage = document.getElementById("no-btn-message");
 
-    noBtn.addEventListener("mouseover", () => {
+    const funnyMessages = [
+      "Oops, try again! 😉",
+      "Are you sure about that?",
+      "My heart says otherwise...",
+      "Is your finger slipping?",
+      "This button seems broken...",
+      "Maybe try the other one? 👉",
+      "Nice try! 😂",
+      "I think you misclicked.",
+      "Error 404: 'No' not found.",
+      "So close! But no.",
+      "Is that your final answer? (It can't be)",
+      "I don't believe you.",
+      "That choice feels… incorrect.",
+      "Hmm, let's pretend that didn't happen.",
+      "Not today 😌",
+      "Try again, champ!",
+      "Bold move. Wrong, but bold.",
+      "The universe says no.",
+      "Let's give that another go.",
+      "Interesting choice. Try again.",
+      "Oops! That wasn't it.",
+      "Your mouse betrayed you.",
+      "That option is unavailable.",
+      "Denied 🚫",
+      "Nope nope nope.",
+      "I admire the confidence. Still no.",
+      "Something tells me you meant the other one.",
+      "Let's rewind and retry.",
+      "That answer has been rejected.",
+      "Close enough… actually not at all.",
+      "We're gonna pretend you didn't click that.",
+      "That button is for decoration only.",
+      "System says: absolutely not.",
+      "Aw, that's cute. But no.",
+      "Incorrect, but I like the enthusiasm.",
+      "Try the *other* option.",
+      "Hmm… suspicious choice.",
+      "That ain't it chief.",
+      "Let's try that again, shall we?",
+      "Nope. Once more!",
+      "That click didn't count.",
+      "Are you testing me?",
+      "I respectfully disagree.",
+      "That was a brave attempt.",
+      "Nice click. Wrong one.",
+      "We're not doing that today.",
+      "Incorrect selection detected.",
+      "Let's choose wisely this time.",
+      "That option is cursed 🧙‍♂️",
+    ];
+
+    let shuffledMessages = [];
+    let messageIndex = 0;
+
+    const shuffleMessages = () => {
+      shuffledMessages = [...funnyMessages].sort(() => Math.random() - 0.5);
+      messageIndex = 0;
+    };
+
+    const moveButtonAndShowMessage = () => {
+      // Move button
       const containerRect = proposalSection.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
-
       const newTop = Math.random() * (containerRect.height - btnRect.height);
       const newLeft = Math.random() * (containerRect.width - btnRect.width);
-
       noBtn.style.top = `${newTop}px`;
       noBtn.style.left = `${newLeft}px`;
-    });
+
+      // Show message
+      if (shuffledMessages.length === 0) {
+        shuffleMessages();
+      }
+      if (messageIndex >= shuffledMessages.length) {
+        shuffleMessages(); // Reshuffle if we've shown them all
+      }
+      noBtnMessage.textContent = shuffledMessages[messageIndex];
+      noBtnMessage.classList.add("visible");
+      messageIndex++;
+    };
+
+    noBtn.addEventListener("mouseover", moveButtonAndShowMessage);
+    noBtn.addEventListener("click", moveButtonAndShowMessage); // For mobile
 
     yesBtn.addEventListener("click", () => {
-      // Hide question and buttons
+      // Hide question, buttons, and funny message
       proposalQuestion.style.display = "none";
       proposalButtons.style.display = "none";
+      noBtnMessage.style.display = "none";
 
       // Show celebration message
       celebrationMessage.classList.remove("hidden");

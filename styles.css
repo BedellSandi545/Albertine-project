@@ -451,6 +451,20 @@ section {
   transition-delay: 4.2s; /* Animates after the last list item */
 }
 
+#no-btn-message {
+  color: #facc15; /* A playful yellow */
+  font-size: 1.2rem;
+  font-style: italic;
+  height: 2em; /* Reserve space to prevent layout shifts */
+  margin-bottom: 2rem;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#no-btn-message.visible {
+  opacity: 1;
+}
+
 #proposal-section {
   min-height: 100vh;
   display: flex;
@@ -813,6 +827,9 @@ section {
   }
   #proposal-question {
     font-size: 2.5rem;
+  }
+  #no-btn-message {
+    font-size: 1.1rem;
   }
   #celebration-message {
     font-size: 2rem;

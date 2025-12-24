@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Story Unfolding</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Lora:ital,wght@1,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <audio id="background-music" loop autoplay>
+      <source src="Deathdousapart.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="cursor-glow"></div>
+    <div id="scroll-sparks"></div>
+    <div class="falling-hearts"></div>
+
+    <main id="main-content">
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="animate-on-scroll">A Chapter for You</h1>
+          <p class="animate-on-scroll">Our story in pictures.</p>
+        </div>
+        <div class="gallery-grid">
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="I thank God all the time that He gave me you. In a world where it's hard to find someone real, you are my safe place."
+          >
+            <img src="images/photo1.jpg" alt="Memory 1" />
+            <div class="caption">My Safe Place</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="Adventurous times"
+          >
+            <img src="images/photo2.jpg" alt="Memory 2" />
+            <div class="caption">Adventurous times</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="Our anniversary always reminds me of th efirst day we met and the day I said yes to you. That was one of my favorite moments. Six years with you still feels like we just met yesterday, I still feel all the goosebumps and butterflies whenever I'm around you. Here's to forever Nyuntine."
+          >
+            <img src="images/photo3.jpg" alt="Memory 3" />
+            <div class="caption">Here's to forever</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="I'm giving you this as a reminder of how much I appreciate you. You put my needs first in a way I never thought possible, especially during my defense and graduation. You carried me on your back this year and for that I'm forever grateful."
+          >
+            <img src="images/photo4.jpg" alt="Memory 4" />
+            <div class="caption">Forever Grateful</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="You might not have everything figured out yet, but you handle us with so much maturity and grace. I am your biggest fan and your proudest girlfriend. I can't wait to be by your side as you hit every single one of your goals. I love you always."
+          >
+            <img src="images/photo5.jpg" alt="Memory 5" />
+            <div class="caption">Your Biggest Fan</div>
+          </div>
+          <div class="gallery-item animate-on-scroll" data-caption="I'm so grateful to God for the heart you have. You don't need to be "rich" yet for me to see your worth, the way you care for me is more valuable than anything. I promise to be right here cheering the loudest when you get all the things you're working for.
+I love you, Garrison. Here's to a lifetime of supporting each other.">
+            <img src="images/photo6.jpg" alt="Memory 6" />
+            <div class="caption">A Lifetime of Support</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="A date with just you will always be my favorite part of any day, I love you so much."
+          >
+            <img src="images/photo7.jpg" alt="Memory 7" />
+            <div class="caption">My Favorite Part of the Day</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="My everything"
+          >
+            <img src="images/photo8.jpg" alt="Memory 8" />
+            <div class="caption">My everything</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="Love in your eyes"
+          >
+            <img src="images/photo9.jpg" alt="Memory 9" />
+            <div class="caption">Love in your eyes</div>
+          </div>
+          <div
+            class="gallery-item animate-on-scroll"
+            data-caption="Can't wait to spend fifty more birthdays with you."
+          >
+            <img src="images/photo10.jpg" alt="Memory 10" />
+            <div class="caption">Fifty More Birthdays</div>
+          </div>
+        </div>
+        <div class="hero-scroll-button">
+          <button id="scroll-to-content-btn" class="animate-on-scroll">
+            Read My Message
+          </button>
+        </div>
+      </section>
+
+      <section id="messages-section" class="messages-section">
+        <h2 class="section-title animate-on-scroll">Words from the Heart</h2>
+        <div class="message-box animate-on-scroll">
+          <p>
+            They say nobody is perfect, but the way you love me is pretty close.
+            Looking back at 2025, I honestly don't know how I would have
+            finished my thesis or survived that graduation madness without you.
+            You were my rock when things got tough, fixing every problem and
+            making sure I shined.
+          </p>
+        </div>
+        <div class="message-box animate-on-scroll">
+          <p>
+            You’re only 23, but you protect me and provide for my heart like a
+            man twice your age. I’m so proud of the man you are today, and I’m
+            even more excited for the man you’re becoming. I don’t just want to
+            be here for the good times; I want to be the woman right next to you
+            when you get that first job, that first car, and all the success
+            coming your way.
+          </p>
+        </div>
+        <div class="message-box animate-on-scroll">
+          <p>
+            Thank you for choosing me every day. I hope everytime you scan this
+            and read it, you’ll be reminded that there’s someone so proud of you
+            and love you beyond your human imaginations. I love you more than
+            words can say. Here’s to forever Nyuntine.
+          </p>
+        </div>
+      </section>
+
+      <section class="final-section">
+        <canvas id="fireworks-canvas"></canvas>
+        <div class="final-content">
+          <h2 class="section-title animate-on-scroll">Forever & Always</h2>
+          <p class="final-text animate-on-scroll">
+            This is just the beginning.
+          </p>
+          <div class="final-heart animate-on-scroll">💙</div>
+        </div>
+      </section>
+    </main>
+
+    <div id="lightbox" class="hidden">
+      <span class="close-lightbox">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" />
+      <div id="lightbox-caption"></div>
+    </div>
+
+    <button id="music-toggle">🔇</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

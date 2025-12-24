@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Force scroll to top on page load ---
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  window.scrollTo(0, 0);
+
   const mainContent = document.getElementById("main-content");
   const musicToggle = document.getElementById("music-toggle");
   const cursorGlow = document.getElementById("cursor-glow");

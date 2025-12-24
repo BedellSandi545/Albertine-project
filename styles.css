@@ -211,37 +211,49 @@ section {
 
 .lightbox-content {
   position: relative;
-  max-width: 80vw;
+  max-width: 90vw;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
 
 #lightbox-img {
   max-width: 100%;
-  max-height: 75vh;
+  max-height: 70vh;
   border-radius: 10px;
   margin-bottom: 20px;
+  object-fit: contain;
 }
 
 #lightbox-caption {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #e0e0e0;
   text-align: center;
   line-height: 1.6;
-  max-width: 700px;
-  margin-left: 2rem;
+  max-width: 600px;
 }
 
 .close-lightbox {
   position: absolute;
-  top: -40px;
-  right: -20px;
-  font-size: 2.5rem;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  line-height: 40px;
+  text-align: center;
   color: #fff;
+  background: radial-gradient(circle, var(--accent-color) 0%, #2563eb 100%);
+  border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .close-lightbox:hover {
@@ -250,6 +262,20 @@ section {
 
 .messages-section {
   background: #111;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: max-height 1.2s ease-in-out, opacity 1.2s ease-in-out,
+    padding 1.2s ease-in-out;
+}
+
+.messages-section.is-visible {
+  max-height: 2000px; /* A large value to ensure all content is visible */
+  opacity: 1;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .message-box {
@@ -349,6 +375,139 @@ section {
   color: var(--accent-color);
   margin-top: 2rem;
   animation: final-heartbeat 1.5s infinite;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.final-heart.clicked {
+  animation: none;
+  transform: scale(1.3);
+}
+
+.final-secret-message {
+  opacity: 0;
+  margin-top: 2rem;
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold;
+  font-style: italic;
+  min-height: 2em;
+  transition: opacity 1s ease-in-out;
+
+  /* Shimmering Gradient Text */
+  color: transparent;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5),
+    0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.final-secret-message.visible {
+  opacity: 1;
+}
+
+.click-prompt {
+  margin-top: 1rem;
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#slideshow-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  padding: 20px;
+}
+
+#slideshow-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slideshow-content-wrapper {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-slideshow {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  background: radial-gradient(circle, var(--accent-color) 0%, #2563eb 100%);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2001;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-slideshow:hover {
+  transform: scale(1.1);
+}
+
+#slideshow-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+  opacity: 0; /* Start with image hidden */
+}
+
+#slideshow-img.animate {
+  animation: kenburns-fade 3s ease-in-out;
+}
+
+@keyframes kenburns-fade {
+  0% {
+    transform: scale(1.05) rotate(0.5deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-0.5deg);
+    opacity: 0;
+  }
 }
 
 @keyframes final-heartbeat {
@@ -366,20 +525,48 @@ section {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
   color: #fff;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #music-toggle:hover {
   background: var(--accent-color);
+  transform: scale(1.1);
+}
+
+#music-toggle .tooltip {
+  visibility: hidden;
+  width: 60px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the button */
+  left: 50%;
+  margin-left: -30px; /* Use half of the width to center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.8rem;
+}
+
+#music-toggle:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Scroll Animations */
@@ -404,8 +591,38 @@ section {
 .gallery-item:nth-child(4) {
   transition-delay: 0.3s;
 }
+.gallery-item:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.gallery-item:nth-child(6) {
+  transition-delay: 0.5s;
+}
+.gallery-item:nth-child(7) {
+  transition-delay: 0.6s;
+}
+.gallery-item:nth-child(8) {
+  transition-delay: 0.7s;
+}
+.gallery-item:nth-child(9) {
+  transition-delay: 0.8s;
+}
+.gallery-item:nth-child(10) {
+  transition-delay: 0.9s;
+}
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   section {
     padding: 80px 20px;
@@ -417,15 +634,25 @@ section {
     font-size: 2.5rem;
   }
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   .message-box {
     font-size: 1.5rem;
+  }
+  #lightbox-caption {
+    font-size: 1rem;
+    max-width: 80vw;
   }
 }
 
 @media (max-width: 480px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
   }
 }

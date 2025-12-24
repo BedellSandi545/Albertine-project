@@ -97,13 +97,13 @@ I love you, Garrison. Here's to a lifetime of supporting each other.">
         </div>
         <div class="hero-scroll-button">
           <button id="scroll-to-content-btn" class="animate-on-scroll">
-            Read My Message
+            Read My Message To You
           </button>
         </div>
       </section>
 
       <section id="messages-section" class="messages-section">
-        <h2 class="section-title animate-on-scroll">Words from the Heart</h2>
+        <h2 class="section-title animate-on-scroll">Words from my Heart</h2>
         <div class="message-box animate-on-scroll">
           <p>
             They say nobody is perfect, but the way you love me is pretty close.
@@ -137,18 +137,46 @@ I love you, Garrison. Here's to a lifetime of supporting each other.">
         <canvas id="fireworks-canvas"></canvas>
         <div class="final-content">
           <h2 class="section-title animate-on-scroll">Forever & Always</h2>
-          <p class="final-text animate-on-scroll">
+                    <p class="final-text animate-on-scroll">
             This is just the beginning.
           </p>
           <div class="final-heart animate-on-scroll">💙</div>
+          <p class="click-prompt animate-on-scroll">Click the heart for a final surprise...</p>
+          <p id="final-secret-message" class="final-secret-message"></p>
         </div>
       </section>
     </main>
 
     <div id="lightbox" class="hidden">
-      <span class="close-lightbox">&times;</span>
-      <img class="lightbox-content" id="lightbox-img" />
-      <div id="lightbox-caption"></div>
+      <div class="lightbox-content">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" alt="Enlarged memory" />
+        <p id="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <div id="slideshow-overlay" class="hidden">
+      <div class="slideshow-content-wrapper">
+        <span class="close-slideshow">&times;</span>
+        <img id="slideshow-img" class="animate" alt="Slideshow Image" />
+      </div>
+    </div>
+
+    <button id="music-toggle">🔇</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+        </div>
+      </section>
+    </main>
+
+    <div id="lightbox" class="hidden">
+      <div class="lightbox-content">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" alt="Enlarged memory" />
+        <p id="lightbox-caption"></p>
+      </div>
     </div>
 
     <button id="music-toggle">🔇</button>
